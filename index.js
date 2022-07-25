@@ -11,7 +11,7 @@ app.use(log);
 console.log(`Node_env ${process.env.NODE_ENV}`);
 
 app.get('/api', (req, res) => {
-  res.send('Hello World!')
+  res.send(`Node_env ${process.env.NODE_ENV}`)
 })
 
 
