@@ -1,0 +1,6 @@
+{
+    "name": "HotelApi - Development",
+    "mail":{
+        "host" : "dev-mail-server"
+    }
+}
