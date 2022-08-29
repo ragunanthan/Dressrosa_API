@@ -7,6 +7,9 @@ var cors = require('cors');
 var startupDebug = require('debug')('app:startup');
 const app = express();
 const homeRoute = require("./routes/home");
+const { connectToDb } = require('./modal/mongoConnect');
+
+
 
 // middleware functions
 app.use(cors());
@@ -24,25 +27,16 @@ if(app.get('env') === 'development'){
 // configuration
 
 
-
+// mongo db intergration
+connectToDb();
 // routers
 app.use("/api", homeRoute);
-
-
-// mongo db intergration
-
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://ragunanthan:6PTA9GpNzhAwvGnN@cluster0.og5gv.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect().then(res => {
-  console.log({res});
-}).catch(err => {
-  console.log({err});
-});
-
 
 startupDebug('app started');
 
 // port that listening 
 const port = process.env.PORT || 3000; 
 app.listen(port, () =>   console.log(`Example app listening on port ${port}`))          
+
+
+
