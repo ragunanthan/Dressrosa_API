@@ -11,5 +11,5 @@ function connectToDb() {
         console.log({err});
       });
 }
-let db = client.db("sample_airbnb");
+let db = client.db("ragu");
 module.exports =  {db, connectToDb};
