@@ -2,7 +2,7 @@ const express = require("express");
 const { db } = require("../modal/mongoConnect");
 
 const router = express.Router();
-let collection =  db.collection('listingsAndReviews');
+let collection =  db.collection('todo');
 
 
 router.get("/", async (req, res) => {
