@@ -20,6 +20,10 @@ router.post("/todo", async (req, res) => {
   
   res.send(genre);
 });
+router.get("/alluser", async (req, res) => { 
+  const data = await user.find({}).toArray();
+  res.send(data );
+});
 
 router.post("/signup", async (req, res) => { 
   // const { error } = validate(req.body);
