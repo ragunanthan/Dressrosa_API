@@ -7,7 +7,7 @@ let collection =  db.collection("todo");
 let user =  db.collection("user");
 
 router.get("/todo", async (req, res) => {
-  const data = await collection.find({}).limit(10).toArray();
+  const data = await collection.find({}).toArray();
   res.send(data );
 });
 
