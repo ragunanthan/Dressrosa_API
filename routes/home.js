@@ -1,4 +1,5 @@
 const express = require("express");
+const { ObjectId } = require("mongodb");
 const { db } = require("../modal/mongoConnect");
 const { validate } = require("../modal/todo");
 
@@ -15,11 +16,16 @@ router.post("/todo", async (req, res) => {
   // const { error } = validate(req.body);
   // if (error) return res.status(400).send(error.details[0].message);
   
-  let genre = await collection.insertOne({ data: req.body.data });
-  
-  
+  let genre = await collection.insertOne({ data: req.body.data, id : req.body.id });
   res.send(genre);
 });
+
+router.delete("/todo/:id", async (req, res) => {
+ 
+  const data = await collection.deleteOne({ _id : ObjectId(req.params.id) });
+  res.send(data);
+});
+
 router.get("/alluser", async (req, res) => { 
   const data = await user.find({}).toArray();
   res.send(data );
